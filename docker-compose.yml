@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+
+  postgres:
+    image: postgres:15
+    container_name: weather_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: weather_user
+      POSTGRES_PASSWORD: weather_pass
+      POSTGRES_DB: weather_db
+    ports:
+      - "55432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  
+#  dagster:
+#    build: .
+#    container_name: dagster_app
+#    depends_on:
+#      - postgres
+#    environment:
+#      DB_HOST: postgres
+#      DB_USER: weather_user
+#      DB_PASSWORD: weather_pass
+#      DB_NAME: weather_db
+#    ports:
+#      - "3000:3000"
+#    volumes:
+#      - .:/app  
+      
+  
+volumes:
+  postgres_data:

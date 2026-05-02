@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: weather_daily_metrics
+    description: "Table analytique contenant les métriques météo quotidiennes par ville"
+
+    columns:
+      - name: city_name
+        tests:
+          - not_null
+
+      - name: weather_date
+        tests:
+          - not_null
+
+      - name: temp_min
+
+      - name: temp_max
+
+      - name: temp_avg
+        tests:
+          - not_null
+
+      - name: humidity
+
+      - name: precipitation
+
+      - name: wind_speed
+
+    tests:
+      - unique:
+          column_name: "city_name || '-' || weather_date"
+
+      - dbt_utils.expression_is_true:
+          arguments:
+            expression: "temp_min <= temp_max"
+
+      - dbt_utils.expression_is_true:
+          arguments:
+            expression: "humidity >= 0 AND humidity <= 100"
+
+      - dbt_utils.expression_is_true:
+          arguments:
+            expression: "precipitation >= 0"
+
+      - dbt_utils.expression_is_true:
+          arguments:
+            expression: "wind_speed >= 0"
