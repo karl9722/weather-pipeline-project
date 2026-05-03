@@ -1,0 +1,11 @@
+README.md
+pyproject.toml
+setup.cfg
+setup.py
+projet_final_4DATA/__init__.py
+projet_final_4DATA/assets.py
+projet_final_4DATA.egg-info/PKG-INFO
+projet_final_4DATA.egg-info/SOURCES.txt
+projet_final_4DATA.egg-info/dependency_links.txt
+projet_final_4DATA.egg-info/requires.txt
+projet_final_4DATA.egg-info/top_level.txt
