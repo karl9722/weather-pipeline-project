@@ -4,5 +4,4 @@ __pycache__/
 dbt/target/
 dbt/dbt_packages/
 *.log
-*.pbix
 .venv/
