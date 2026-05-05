@@ -28,30 +28,6 @@ Open-Meteo → utilise ces coordonnées pour fournir la météo
 
 ➡️ Pipeline cohérente de la localisation à l’analyse
 
-🏗️ Architecture globale
-        ┌────────────┐
-        │  Nominatim │
-        └─────┬──────┘
-              │
-              ▼
-        ┌────────────┐
-        │ Open-Meteo │
-        └─────┬──────┘
-              │
-              ▼
-        ┌────────────┐
-        │ PostgreSQL │
-        └─────┬──────┘
-              │
-              ▼
-        ┌────────────┐
-        │    dbt     │
-        └─────┬──────┘
-              │
-              ▼
-        ┌────────────┐
-        │ Power BI   │
-        └────────────┘
 
 📊 Données manipulées
 Entités
