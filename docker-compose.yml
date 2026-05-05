@@ -17,20 +17,20 @@ services:
       - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
 
   
-#  dagster:
-#    build: .
-#    container_name: dagster_app
-#    depends_on:
-#      - postgres
-#    environment:
-#      DB_HOST: postgres
-#      DB_USER: weather_user
-#      DB_PASSWORD: weather_pass
-#      DB_NAME: weather_db
-#    ports:
-#      - "3000:3000"
-#    volumes:
-#      - .:/app  
+  dagster:
+    build: .
+    container_name: dagster_app
+    depends_on:
+      - postgres
+    environment:
+      DB_HOST: postgres
+      DB_USER: weather_user
+      DB_PASSWORD: weather_pass
+      DB_NAME: weather_db
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app  
       
   
 volumes:
