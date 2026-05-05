@@ -13,3 +13,36 @@ L’objectif est de collecter des données météo multi-villes via des APIs ext
 API choisie  
 
 les API Open-Meteo + Nominatim 
+
+## Données manipulées
+
+### Entités
+- Villes géolocalisées  
+- Données météo  
+
+### Champs principaux
+- Ville, département  
+- Latitude, longitude  
+- Température  
+- Humidité  
+- Précipitations  
+- Vent  
+
+---
+
+## Stack technique
+
+- Python 3.11  
+- Dagster  
+- PostgreSQL  
+- dbt  
+- Docker / Docker Compose  
+- Power BI  
+
+---
+              
+## Installation et lancement
+
+### 1. Lancer PostgreSQL avec Docker
+
+```bash
