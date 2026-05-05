@@ -1,168 +1,140 @@
-🌦️ Weather Data Pipeline avec Dagster
-
-👥 Équipe projet
+Weather Data Pipeline avec Dagster
+Équipe projet
 HABRAN Karl
 SEBASTIAO Luna
 NGNIDJIE Alex-Claudel
-📌 Description du projet
+Description du projet
 
 Ce projet consiste à concevoir et déployer une pipeline de données météo de bout en bout orchestrée avec Dagster.
 
 L’objectif est de :
 
 Collecter des données météo multi-villes via des APIs
-Stocker les données dans une base PostgreSQL
+Stocker les données dans PostgreSQL
 Transformer les données avec dbt
-Produire des indicateurs analytiques via Power BI
+Produire des indicateurs analytiques avec Power BI
 
-👉 Le projet suit une logique ELT (Extract → Load → Transform)
+Le projet suit une logique ELT (Extract → Load → Transform).
 
-🌍 APIs utilisées
-Open-Meteo → données météo
-Nominatim → géolocalisation des villes
+APIs utilisées
+Open-Meteo : données météo
+Nominatim : géolocalisation des villes
 
-💡 Pourquoi ce choix ?
+Justification :
 
-Nominatim → transforme une ville en coordonnées
-Open-Meteo → utilise ces coordonnées pour fournir la météo
+Nominatim permet d’obtenir les coordonnées à partir d’une ville
+Open-Meteo utilise ces coordonnées pour fournir les données météo
 
-➡️ Pipeline cohérente de la localisation à l’analyse
+Cela permet de construire une pipeline cohérente de la localisation jusqu’à l’analyse.
 
+Données manipulées
 
-📊 Données manipulées
-Entités
+Entités :
+
 Villes géolocalisées
 Données météo
-Champs principaux
+
+Champs principaux :
+
 Ville, département
-Latitude / Longitude
-Température
-Humidité
-Précipitations
-Vent
-
-
-⚙️ Stack technique
+Latitude, longitude
+Température, humidité, précipitations, vent
+Stack technique
 Python 3.11
 Dagster
 PostgreSQL
 dbt
 Docker / Docker Compose
 Power BI
+Lancement du projet
 
-📦 Dépendances principales :
-Dagster, pandas, requests, psycopg, SQLAlchemy, dbt
+1. Lancer PostgreSQL
 
-🐳 Lancement du projet
-1️⃣ Lancer PostgreSQL avec Docker
-cd weather-pipeline-project
 docker-compose up -d
 
-➡️ PostgreSQL exposé sur le port 55432
-
-2️⃣ Lancer Dagster
-cd ./src/projet_final_4DATA
-
-# définir la variable d'environnement
-$env:DATABASE_URL="votre_url"
+2. Lancer Dagster
 
 dagster dev
-🚀 Exécution du pipeline
+Pipeline de données
 
-Dans l’interface Dagster :
+Extract
 
-▶️ Ordre d’exécution des assets
-get_coordinates
-get_raw_meteo_data
-clean_meteo_data
-meteo_metrics
-🔄 Pipeline de données
-
-📥 Extract
 Récupération des villes
 Géolocalisation via Nominatim
-
 Appel API Open-Meteo
-📦 Load
+
+Load
+
 Insertion des données brutes dans PostgreSQL
 
-🔧 Transform
+Transform
+
 Nettoyage des données
 Standardisation des formats
 Création de métriques
+Orchestration avec Dagster
 
-🧠 Orchestration avec Dagster
+Assets
 
-📌 Assets
 get_coordinates
 get_raw_meteo_data
 clean_meteo_data
 meteo_metrics
 
-⚙️ Jobs
-Collecte des données météo
-Transformation des données
-Nettoyage des anciennes données
+Jobs
 
-⏰ Schedules
-Toutes les heures → ingestion météo
-Quotidien → calcul des métriques
-Nettoyage périodique
+Collecte des données
+Transformation
+Nettoyage des données anciennes
 
-🚨 Sensors
-Détection météo extrême (optionnel)
+Schedules
 
-🧩 Partitions
-Partition par date pour historisation
+Toutes les heures : ingestion
+Quotidien : calcul des métriques
 
-👉 Architecture conforme aux bonnes pratiques Dagster
+Partitions
 
-🧪 dbt – Transformation des données
-Modèles
-Staging → données nettoyées
-Mart → données analytiques
-Exemples de métriques
+Partition par date
+dbt – Transformation des données
+
+Modèles :
+
+Staging : données nettoyées
+Mart : données analytiques
+
+Exemples de métriques :
+
 Température moyenne
 Précipitations totales
 Min / Max par ville
+Dashboard Power BI
 
-📈 Dashboard Power BI
-KPIs
-🌧️ Pluie élevée
-🌬️ Vent fort
-🌡️ Variation de température
+Indicateurs :
 
+Pluie élevée
+Vent fort
+Variation de température
+Monitoring et tests
 
-🔍 Monitoring & Tests
+Trois niveaux :
 
-🧱 3 couches de monitoring
-Dagster → pipeline
-dbt tests → qualité des données
-PostgreSQL → audit & logs
+Dagster : suivi du pipeline
+dbt tests : qualité des données
+PostgreSQL : audit et logs
+Risques
 
-
-
-⚠️ Risques connus
 Nominatim
-Limite : 1 requête/seconde
+
+Limite de requêtes
 Données crowdsourcées
+
 Open-Meteo
+
 Temps de réponse variable
-Sources multiples → incohérences possibles
-🛠️ Plan B
-Changer d’API météo si besoin
-Ajouter cache ou stockage intermédiaire
+Incohérences possibles
+Objectif final
 
-🧑‍💻 Répartition des rôles
-Membre	Responsabilités
-Karl	Power BI + PostgreSQL
-Luna	Dagster
-Alex-Claudel	dbt
-Tous	README + Soutenance
+Construire une solution complète permettant :
 
-
-🎯 Objectif final
-Créer une solution complète permettant :
-
-📊 Analyse météo multi-villes
-📈 Aide à la décision
+Analyse météo multi-villes
+Aide à la décision
