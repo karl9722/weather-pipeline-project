@@ -140,18 +140,7 @@ Dagster → pipeline
 dbt tests → qualité des données
 PostgreSQL → audit & logs
 
-📁 Structure du projet (exemple)
-weather-pipeline-project/
-│
-├── src/
-│   └── projet_final_4DATA/
-│
-├── dbt/
-├── sql/
-├── docker-compose.yml
-├── requirements.txt
-├── README.md
-└── .env
+
 
 ⚠️ Risques connus
 Nominatim
@@ -163,14 +152,16 @@ Sources multiples → incohérences possibles
 🛠️ Plan B
 Changer d’API météo si besoin
 Ajouter cache ou stockage intermédiaire
+
 🧑‍💻 Répartition des rôles
 Membre	Responsabilités
 Karl	Power BI + PostgreSQL
 Luna	Dagster
 Alex-Claudel	dbt
 Tous	README + Soutenance
-🎯 Objectif final
 
+
+🎯 Objectif final
 Créer une solution complète permettant :
 
 📊 Analyse météo multi-villes
